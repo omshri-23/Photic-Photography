@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portrait Photography</title>
+  <link rel="stylesheet" href="category.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="nature-header">
+    <a href="index.html" class="logo">Photic Photo</a>
+    <nav>
+      <ul class="nav-links" id="natureNavLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About-Photic</a></li>
+        <li class="dropdown-parent">
+          <a href="#">Categories</a>
+          <div class="dropdown">
+            <a href="nature.html">Nature</a>
+            
+            <a href="street.html">Street</a>
+            <a href="random.html">Random</a>
+            <a href="night.html">Night</a>
+            <a href="others.html">Others</a>
+          </div>
+        </li>
+      </ul>
+      <button class="menu-btn" id="menuIcon">&#9776;</button>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('portrait-bg.jpg') center/cover no-repeat;">
+    <h1>Portrait Collection</h1>
+    <p>Emotions, stories, and elegance — captured through faces and expressions.</p>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <h2>🧍‍♂️ Human Emotions</h2>
+    <div class="gallery-grid">
+      <img src="portrait4.jpg" class="lightbox-img" alt="Portrait 4"loading="lazy"/>
+      <img src="portrait2.jpg" class="lightbox-img" alt="Portrait 2"loading="lazy"/>
+      <img src="portrait8.jpg" class="lightbox-img" alt="Portrait 8"loading="lazy"/>
+      <img src="portrait6.jpg" class="lightbox-img" alt="Portrait 6"loading="lazy"/>
+      <img src="portrait11.jpg" class="lightbox-img" alt="Portrait 11"loading="lazy"/>
+      <img src="portrait12.jpg" class="lightbox-img" alt="Portrait 12"loading="lazy"/>
+      <img src="portrait1.jpg" class="lightbox-img" alt="Portrait 1"loading="lazy"/>
+      <img src="portrait07.jpg" class="lightbox-img" alt="Portrait 7"loading="lazy"/>
+      <img src="portrait13.jpg" class="lightbox-img" alt="Portrait 13"loading="lazy"/>
+      <img src="portrait14.jpg" class="lightbox-img" alt="Portrait 14"loading="lazy"/>
+      <img src="portrait15.jpg" class="lightbox-img" alt="Portrait 15"loading="lazy"/>
+      <img src="portrait3.jpg" class="lightbox-img" alt="Portrait 3"loading="lazy"/>
+      <img src="portrait5.jpg" class="lightbox-img" alt="Portrait 5"loading="lazy"/>
+      <img src="portrait9.jpg" class="lightbox-img" alt="Portrait 9"loading="lazy"/>
+      <img src="portrait10.jpg" class="lightbox-img" alt="Portrait 10"loading="lazy"/>    
+    </div>
+  </section>
+
+  <!-- Lightbox Viewer -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-image" src="" alt="Enlarged Portrait" />
+  </div>
+
+<!-- Footer -->
+<footer class="custom-footer-structured">
+  <div class="footer-container">
+    <!-- Column 1: Logo & Socials -->
+    <div class="footer-column">
+      <h3 class="footer-logo">PHOTIC PHOTO</h3>
+      <p class="footer-tagline">Capturing moments. Framing stories.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/omshri_23?igsh=NG9kMWdxMHJpcWYw"><img src="instagram.svg" alt="Instagram" /></a>
+        <a href="https://github.com/omshri-23"><img src="github.svg" alt="GitHub" /></a>
+        <a href="https://www.youtube.com/@PHOTIC_PHOTO"><img src="youtube.svg" alt="YouTube" /></a>
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-column">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>        
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Info -->
+    <div class="footer-column">
+      <h4>Get in Touch</h4>
+      <p>Email: <a href="mailto:info@photicphoto.com">info@photicphoto.com</a></p>
+      <p>Phone: +91 738757570</p>
+    </div>
+
+    <!-- Column 4: Location or Studio -->
+    <div class="footer-column">
+      <h4>Studio</h4>
+      <p>Photic Photography</p>
+      <p>Kolhapur, Maharashtra</p>
+      <p>India - 416101</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 PHOTIC Photography. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- Script -->
+  <script src="category.js"></script>
+</body>
+</html>

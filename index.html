@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    
+
+    <!-- Header -->
+    <header>
+      <a href="index.html" class="logo">PHOTIC PHOTO</a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#Vault">Vault</a></li>
+          <li><a href="#lab">Lab</a></li>
+          <li><a href="about.html">About-Photic</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="dropdown-parent">
+            <a href="#">Categories</a>
+            <div class="dropdown">
+              <a href="nature.html">Nature</a>
+              <a href="portrait.html">Portrait</a>
+              <a href="street.html">Street</a>
+              <a href="random.html">Random</a>
+              <a href="night.html">Night</a>
+              <a href="others.html">Others</a>
+            </div>
+          </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="menu-btn" id="menuIcon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+    
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to PHOTIC PHOTO LAB</h1>
+        <p>Capturing moments, one click at a time.</p>
+        <a href="gallery.html" class="btn">View Gallery</a>
+    </section>
+
+    <!-- LAB-Gallery Section -->
+    <section id="Vault" class="gallery">
+      <a href="#Vault" class="section-heading">
+        <h2>Photic Vault</h2>
+      </a>
+        <div class="gallery-grid">
+            <img src="photo01.jpg" alt="Photo 1" class="lightbox-img">
+            <img src="photo9.jpg" alt="Photo 2" class="lightbox-img">
+            <img src="photo07.jpg" alt="Photo 3" class="lightbox-img">
+            <img src="photo8.jpg" alt="Photo 4" class="lightbox-img">
+            <img src="photo5.jpg" alt="Photo 5" class="lightbox-img">
+            <img src="photo6.jpg" alt="Photo 6" class="lightbox-img">
+            <img src="photo3.jpg" alt="Photo 7" class="lightbox-img">
+            <img src="photo4.jpg" alt="Photo 8" class="lightbox-img">
+        </div>
+    </section>
+
+    <!-- Lightbox Viewer -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-image" src="" alt="Enlarged Image">
+    </div>
+
+    <!--lab Section -->
+    <section class="lab" id="lab">
+        <h2>PHOTIC LAB</h2>
+        <p>Hello! I'm a passionate photographer capturing the beauty of life through my lens.</p>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2>Lab Categories</h2>
+        <div class="category-grid">
+            <div class="category" onclick="window.location.href='nature.html'"><img src="boat.jpg" alt="Nature"><p>Nature</p></div>
+            <div class="category"onclick="window.location.href='portrait.html'"><img src="portrait.jpg" alt="Portrait"><p>Portraits</p></div>
+            <div class="category" onclick="window.location.href='Street.html'"><img src="man-portrait.jpg" alt="Street"><p>Street</p></div>
+            <div class="category" onclick="window.location.href='random.html'"><img src="random.jpg" alt="Random"><p>Random</p></div>
+            <div class="category" onclick="window.location.href='night.html'"><img src="night.jpg" alt="Night"><p>Night</p></div>
+            <div class="category" onclick="window.location.href='others.html'"><img src="others.jpg" alt="Others"><p>Others</p></div>
+        </div>
+    </section>
+
+    
+  <section class="before-after-section">
+    <h2>Before & After Comparison</h2>
+    <div class="before-after-container">
+
+      <div class="comparison-wrapper">
+        <div class="ba-comparison">
+          <div class="ba-resize">
+            <img src="before02.jpg" alt="Before">
+          </div>
+          <img src="after02.jpg" alt="After">
+        </div>
+        <input type="range" min="0" max="100" value="50" class="ba-slider">
+        <span class="ba-label left">Before</span>
+        <span class="ba-label right">After</span>
+      </div>
+
+      <div class="comparison-wrapper">
+        <div class="ba-comparison">
+          <div class="ba-resize">
+            <img src="before01.jpg" alt="Before">
+          </div>
+          <img src="after01.jpg" alt="After">
+        </div>
+        <input type="range" min="0" max="100" value="50" class="ba-slider">
+        <span class="ba-label left">Before</span>
+        <span class="ba-label right">After</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="video-section" id="video">
+    <h2 class="video-title">Color Grading Shot Video Sample</h2>
+    <div class="video-container">
+  
+      <!-- Left video with label -->
+      <div class="video-wrapper">
+        <video src="video1.mp4" muted poster="thumb.jpg"></video>
+        <div class="video-label">My-self</div>
+        <button class="mute-btn">🔇</button>
+      </div>
+  
+      <!-- Right video -->
+      <div class="video-wrapper">
+        <video src="video2.mp4" muted poster="thumb.jpg"></video>
+        <div class="video-label">Back in 23+1</div>
+        <button class="mute-btn">🔇</button>
+      </div>
+  
+    </div>
+  </section>
+  
+    <!-- Contact Section -->
+<section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <form class="contact-form">
+        <div class="input-group">
+          <input type="text" id="name" required>
+          <label for="name">Your Name</label>
+        </div>
+        <div class="input-group">
+          <input type="email" id="email" required>
+          <label for="email">Your Email</label>
+        </div>
+        <div class="input-group">
+          <textarea id="message" rows="4" required></textarea>
+          <label for="message">Your Message</label>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+  
+      <div class="contact-info">
+        <p>📧 <strong>Email:</strong> omshri2315@email.com</p>
+        <p>📍 <strong>Location:</strong> Kolhapur, Maharashtra</p>
+        <p>📱 <strong>Phone:</strong> +91 7387517570</p>
+      
+        <div class="social-links">
+          <a href="https://www.instagram.com/omshri_23?igsh=NG9kMWdxMHJpcWYw" target="_blank" class="social-link instagram">
+            <i class="fab fa-instagram"></i> Instagram  | 
+          </a>
+          <a href="www.linkedin.com/in/omshri23" target="_blank" class="social-link facebook">
+            <i class="fab fa-facebook"></i> LinkedIn | 
+          </a>
+          <a href="https://www.youtube.com/@PHOTIC_PHOTO" target="_blank" class="social-link facebook">
+            <i class="fab fa-facebook"></i> YouTube | 
+          </a>
+          <a href="https://github.com/omshri-23" target="_blank" class="social-link GitHub">
+            <i class="fab fa-twitter"></i> GitHub
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  
+
+    <!-- Footer -->
+    <footer class="custom-footer-structured">
+      <div class="footer-container">
+        <!-- Column 1: Logo & Socials -->
+        <div class="footer-column">
+          <h3 class="footer-logo">PHOTIC PHOTO</h3>
+          <p class="footer-tagline">Capturing moments. Framing stories.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/omshri_23?igsh=NG9kMWdxMHJpcWYw"><img src="instagram.svg" alt="Instagram" /></a>
+            <a href="https://github.com/omshri-23"><img src="github.svg" alt="GitHub" /></a>
+            <a href="https://www.youtube.com/@PHOTIC_PHOTO"><img src="youtube.svg" alt="YouTube" /></a>
+          </div>
+        </div>
+    
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About-Photic</a></li>
+          
+          </ul>
+        </div>
+    
+        <!-- Column 3: Contact Info -->
+        <div class="footer-column">
+          <h4>Get in Touch</h4>
+          <p>Email: <a href="mailto:info@photicphoto.com">info@photicphoto.com</a></p>
+          <p>Phone: +91 738757570</p>
+        </div>
+    
+        <!-- Column 4: Location or Studio -->
+        <div class="footer-column">
+          <h4>Studio</h4>
+          <p>Photic Photography</p>
+          <p>Kolhapur, Maharashtra</p>
+          <p>India - 416101</p>
+        </div>
+      </div>
+    
+      <div class="footer-bottom">
+        <p>© 2025 PHOTIC Photography. All rights reserved.</p>
+      </div>
+    </footer>
+    
+    
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js" async></script>
+</body>
+</html>

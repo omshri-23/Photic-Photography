@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nature Photography</title>
+  <link rel="stylesheet" href="category.css" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+
+  <!-- Reuse Header -->
+  <header class="nature-header">
+    <a href="index.html" class="logo">Photic Photo</a>
+    <nav>
+      <ul class="nav-links" id="natureNavLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About-Photic</a></li>
+        <li class="dropdown-parent">
+          <a href="#">Categories</a>
+          <div class="dropdown">
+            <a href="portrait.html">Portrait</a>
+            <a href="street.html">Street</a>
+            <a href="random.html">Random</a>
+            <a href="night.html">Night</a>
+            <a href="others.html">Others</a>
+          </div>
+        </li>
+      </ul>
+      <button class="menu-btn" id="menuIcon">&#9776;</button>
+    </nav>
+  </header>
+  
+<!-- Hero Banner -->
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('night-bg.jpg') center/cover no-repeat;">
+  <h1>Nature Collection</h1>
+  <p>Vibrant greens, golden sunlight, and serene landscapes frozen in time.</p>
+</section>
+
+<!-- Gallery -->
+<section class="gallery">
+  <div class="gallery-grid">
+    <img src="nature1.jpg" alt="Nature 1" class="lightbox-img" loading="lazy"/>
+    <img src="nature2.jpg" alt="Nature 2" class="lightbox-img" loading="lazy"/>
+    <img src="nature3.jpg" alt="Nature 3" class="lightbox-img" loading="lazy"/>
+    <img src="nature4.jpg" alt="Nature 4" class="lightbox-img" loading="lazy"/>
+    <img src="nature5.jpg" alt="Nature 5" class="lightbox-img" loading="lazy"/> 
+    <img src="nature15.jpg" alt="Nature 15" class="lightbox-img" loading="lazy"/>
+    <img src="nature8.jpg" alt="Nature 8" class="lightbox-img" loading="lazy"/>
+    <img src="nature09.jpg" alt="Nature 9" class="lightbox-img" loading="lazy"/>
+    <img src="nature12.jpg" alt="Nature 12" class="lightbox-img" loading="lazy"/>
+    <img src="nature13.jpg" alt="Nature 13" class="lightbox-img" loading="lazy"/>
+    <img src="nature11.jpg" alt="Nature 11" class="lightbox-img" loading="lazy"/>
+    <img src="nature14.jpg" alt="Nature 14" class="lightbox-img" loading="lazy"/>
+    <img src="nature10.jpg" alt="Nature 10" class="lightbox-img" loading="lazy"/>
+    <img src="nature6.jpg" alt="Nature 6" class="lightbox-img" loading="lazy"/>
+    <img src="nature7.jpg" alt="Nature 7" class="lightbox-img" loading="lazy"/>
+  </div>
+</section>
+
+
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-image" src="" />
+  </div>
+
+  <!-- Footer -->
+  <footer class="custom-footer-structured">
+    <div class="footer-container">
+      <!-- Column 1: Logo & Socials -->
+      <div class="footer-column">
+        <h3 class="footer-logo">PHOTIC PHOTO</h3>
+        <p class="footer-tagline">Capturing moments. Framing stories.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/omshri_23?igsh=NG9kMWdxMHJpcWYw"><img src="instagram.svg" alt="Instagram" /></a>
+          <a href="https://github.com/omshri-23"><img src="github.svg" alt="GitHub" /></a>
+          <a href="https://www.youtube.com/@PHOTIC_PHOTO"><img src="youtube.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+  
+      <!-- Column 2: Quick Links -->
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About</a></li>        
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+  
+      <!-- Column 3: Contact Info -->
+      <div class="footer-column">
+        <h4>Get in Touch</h4>
+        <p>Email: <a href="mailto:info@photicphoto.com">info@photicphoto.com</a></p>
+        <p>Phone: +91 738757570</p>
+      </div>
+  
+      <!-- Column 4: Location or Studio -->
+      <div class="footer-column">
+        <h4>Studio</h4>
+        <p>Photic Photography</p>
+        <p>Kolhapur, Maharashtra</p>
+        <p>India - 416101</p>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2025 PHOTIC Photography. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="category.js"></script>
+
+</body>
+</html>
