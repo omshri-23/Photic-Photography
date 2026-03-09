@@ -1,15 +1,23 @@
-# Photic Photo
+# Photic Photography
 
-React + Vite portfolio rebuild for the original Photic Photo project.
+A photography portfolio platform built with React, Vite, Supabase, and Vercel.
 
-This project is intended to be deployed as a new site, separate from the older static HTML/CSS/JS version.
+This project combines a public showcase site with a lightweight admin workflow for managing portfolio items and contact submissions.
+
+## Features
+
+- Photography-first portfolio presentation
+- Admin-managed content backed by Supabase
+- Vercel serverless API routes
+- Optional email notifications with Resend
 
 ## Stack
 
-- React + Vite frontend
-- Vercel serverless API routes
-- Supabase for portfolio items and contact messages
-- Resend for optional email notifications
+- React
+- Vite
+- Supabase
+- Vercel Functions
+- Resend
 
 ## Local setup
 
@@ -17,10 +25,12 @@ This project is intended to be deployed as a new site, separate from the older s
 2. Copy `.env.example` to `.env`
 3. Fill in the Supabase and admin credentials
 4. Apply `supabase/schema.sql` in the Supabase SQL editor
-5. Run `npm run dev` for frontend work
-6. Use `vercel dev` if you want local frontend + API route behavior together
+5. Run `npm run dev`
+6. Use `vercel dev` if you want frontend and API routes together locally
 
-## Required environment variables
+## Environment variables
+
+Required:
 
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
@@ -28,15 +38,18 @@ This project is intended to be deployed as a new site, separate from the older s
 - `ADMIN_PASSWORD`
 - `ADMIN_TOKEN_SECRET`
 
-## Optional environment variables
+Optional:
 
 - `NOTIFY_EMAIL`
 - `RESEND_API_KEY`
 - `RESEND_FROM_EMAIL`
 
-## Final deployment flow
+## Deployment
 
-### 1. Create a new GitHub repository
+1. Push the project to GitHub
+2. Import the repository into Vercel
+3. Add the required environment variables
+4. Run the schema in `supabase/schema.sql`
 
 Use this folder as the source:
 
