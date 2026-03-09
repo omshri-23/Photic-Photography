@@ -93,10 +93,10 @@ const pressMentions = [
 ];
 
 const socialIcons = [
-  { label: "Instagram", href: profile.links.instagram, icon: "instagram.svg" },
-  { label: "GitHub", href: profile.links.github, icon: "github.svg" },
-  { label: "YouTube", href: profile.links.youtube, icon: "youtube.svg" },
-  { label: "LinkedIn", href: profile.links.linkedin, icon: "linkedin.svg" },
+  { label: "Instagram", href: profile.links.instagram, icon: "icons/instagram.svg" },
+  { label: "GitHub", href: profile.links.github, icon: "icons/github.svg" },
+  { label: "YouTube", href: profile.links.youtube, icon: "icons/youtube.svg" },
+  { label: "LinkedIn", href: profile.links.linkedin, icon: "icons/linkedin.svg" },
 ];
 
 const filterCategories = [
