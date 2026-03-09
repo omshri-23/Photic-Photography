@@ -1428,6 +1428,9 @@ function AdminPage() {
     status: "published",
     sortOrder: 0,
   });
+  const [pendingMediaFile, setPendingMediaFile] = useState(null);
+  const [pendingThumbnailFile, setPendingThumbnailFile] = useState(null);
+  const [uploadingField, setUploadingField] = useState("");
   const [portfolioItems, setPortfolioItems] = useState([]);
   const [messages, setMessages] = useState([]);
   const [state, setState] = useState("");
@@ -1508,6 +1511,69 @@ function AdminPage() {
       status: "published",
       sortOrder: 0,
     });
+    setPendingMediaFile(null);
+    setPendingThumbnailFile(null);
+  }
+
+  async function fileToBase64(file) {
+    const buffer = await file.arrayBuffer();
+    const bytes = new Uint8Array(buffer);
+    const chunkSize = 0x8000;
+    let binary = "";
+
+    for (let index = 0; index < bytes.length; index += chunkSize) {
+      const chunk = bytes.subarray(index, index + chunkSize);
+      binary += String.fromCharCode(...chunk);
+    }
+
+    return window.btoa(binary);
+  }
+
+  async function handleUpload(field) {
+    const file = field === "mediaUrl" ? pendingMediaFile : pendingThumbnailFile;
+    if (!file) {
+      setState(`Choose a ${field === "mediaUrl" ? "media" : "thumbnail"} file first.`);
+      return;
+    }
+
+    setState("");
+    setUploadingField(field);
+
+    try {
+      const base64 = await fileToBase64(file);
+      const folder = field === "thumbnailUrl" ? "thumbnails" : form.mediaType === "video" ? "videos" : "images";
+      const response = await fetch("/api/admin-upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          base64,
+          fileName: file.name,
+          contentType: file.type || "application/octet-stream",
+          folder,
+          title: form.title || file.name,
+        }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || "Unable to upload file.");
+      }
+
+      setForm((current) => ({ ...current, [field]: payload.url }));
+      if (field === "mediaUrl") {
+        setPendingMediaFile(null);
+      } else {
+        setPendingThumbnailFile(null);
+      }
+      setState(`${field === "mediaUrl" ? "Media" : "Thumbnail"} uploaded successfully.`);
+    } catch (error) {
+      setState(error.message || "Unable to upload file.");
+    } finally {
+      setUploadingField("");
+    }
   }
 
   async function handleDeleteItem(id) {
@@ -1636,10 +1702,36 @@ function AdminPage() {
               Media URL
               <input value={form.mediaUrl} onChange={(event) => setForm((current) => ({ ...current, mediaUrl: event.target.value }))} required />
             </label>
+            <div className="upload-row">
+              <label>
+                Upload media file
+                <input
+                  type="file"
+                  accept={form.mediaType === "video" ? "video/*" : "image/*"}
+                  onChange={(event) => setPendingMediaFile(event.target.files?.[0] || null)}
+                />
+              </label>
+              <button type="button" className="ghostbtn" onClick={() => handleUpload("mediaUrl")} disabled={!pendingMediaFile || uploadingField === "mediaUrl"}>
+                {uploadingField === "mediaUrl" ? "Uploading..." : "Upload media"}
+              </button>
+            </div>
             <label>
               Thumbnail URL
               <input value={form.thumbnailUrl} onChange={(event) => setForm((current) => ({ ...current, thumbnailUrl: event.target.value }))} />
             </label>
+            <div className="upload-row">
+              <label>
+                Upload thumbnail file
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(event) => setPendingThumbnailFile(event.target.files?.[0] || null)}
+                />
+              </label>
+              <button type="button" className="ghostbtn" onClick={() => handleUpload("thumbnailUrl")} disabled={!pendingThumbnailFile || uploadingField === "thumbnailUrl"}>
+                {uploadingField === "thumbnailUrl" ? "Uploading..." : "Upload thumbnail"}
+              </button>
+            </div>
             <div className="admin-form-row">
               <label>
                 Status

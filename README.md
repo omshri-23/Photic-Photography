@@ -34,6 +34,7 @@ Required:
 
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_STORAGE_BUCKET`
 - `ADMIN_USERNAME`
 - `ADMIN_PASSWORD`
 - `ADMIN_TOKEN_SECRET`
@@ -49,7 +50,8 @@ Optional:
 1. Push the project to GitHub
 2. Import the repository into Vercel
 3. Add the required environment variables
-4. Run the schema in `supabase/schema.sql`
+4. Create a public Supabase Storage bucket such as `portfolio-media`
+5. Run the schema in `supabase/schema.sql`
 
 Use this folder as the source:
 

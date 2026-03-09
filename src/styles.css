@@ -171,8 +171,23 @@ header.sc { padding: 14px 52px; background: rgba(2,13,26,.93); backdrop-filter: 
 .admin-main { padding: 140px 5vw 80px; }
 .admin-grid { align-items: start; margin: 2rem 0; }
 .admin-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.upload-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: end; }
 .checkbox-row { display: flex !important; align-items: center; gap: .75rem; }
 .checkbox-row input { width: auto !important; }
+.ghostbtn {
+  min-height: 52px;
+  border: 1px solid var(--rim2);
+  background: rgba(13,35,64,.5);
+  color: var(--ice);
+  padding: 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+.ghostbtn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
 .admin-table-wrap { overflow: auto; border: 1px solid var(--rim); background: var(--deep); }
 .table-action { padding: .7rem 1rem; border: 1px solid var(--rim2); color: var(--ice); }
 table { width: 100%; border-collapse: collapse; }
@@ -211,6 +226,7 @@ footer { border-top: 1px solid var(--rim); padding: 60px 5vw 28px; }
   .gi:nth-child(n + 2) { grid-column: span 1; grid-row: span 1; }
   #lab, .contact, .category-hero, .bagrid, .vgrid, .admin-grid, .fgrid { grid-template-columns: 1fr; }
   .contact { gap: 34px; }
+  .upload-row, .admin-form-row { grid-template-columns: 1fr; }
   .cform { min-height: auto; }
   .cgrid { grid-template-columns: 1fr 1fr; }
   .category-grid-alt .gi:nth-child(n) { grid-column: span 4; }
