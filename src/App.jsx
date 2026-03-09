@@ -506,6 +506,7 @@ function Footer() {
             Photic Photo
           </Link>
           <p className="ftag">Capturing moments. Framing stories. One deliberate click at a time.</p>
+          <p className="ftag">Photography, cinematic edits, and visual storytelling shaped by mood, light, and detail.</p>
           <div className="fsocs">
             {socialIcons.map((item) => (
               <a key={item.label} href={item.href} target="_blank" rel="noreferrer">

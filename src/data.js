@@ -6,13 +6,13 @@ export const profile = {
   email: "omshri.2311@gmail.com",
   backupEmail: "omshrisingh93056@gmail.com",
   phone: "+91 7387517570",
-  tagline: "Capturing moods, movement, and memory through a cinematic mobile lens.",
+  tagline: "Capturing moments. Framing stories. One deliberate click at a time.",
   intro:
-    "This rebuilt portfolio turns the first version of Photic Photo into a cleaner, sharper showcase with a real contact workflow, structured galleries, and an admin space for new enquiries.",
+    "A visual space for portraits, atmosphere, emotion, and carefully crafted edits shaped by mood, light, and detail.",
   about: [
-    "I am a self-taught mobile photographer focused on transforming everyday moments into high-contrast, story-led frames.",
-    "My work moves between nature, portraiture, street observation, night scenes, and experimental edits.",
-    "Photic Photo is where I collect the frames, grading experiments, and visual studies that shaped my style.",
+    "I work through mobile photography, cinematic edits, and visual storytelling to turn simple moments into deliberate frames.",
+    "My style moves between portraits, atmosphere, street observations, night scenes, and mood-led visual studies.",
+    "Photic Photo is the space where those frames, edits, and creative experiments come together as one evolving archive.",
   ],
   links: {
     instagram: "https://www.instagram.com/photic.photo",
