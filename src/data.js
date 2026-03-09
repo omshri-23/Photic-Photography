@@ -1,0 +1,89 @@
+export const profile = {
+  brand: "Photic Photo",
+  name: "Omshri",
+  title: "Mobile Photographer and Visual Storyteller",
+  location: "Kolhapur, Maharashtra, India",
+  email: "omshri.2311@gmail.com",
+  backupEmail: "omshrisingh93056@gmail.com",
+  phone: "+91 7387517570",
+  tagline: "Capturing moods, movement, and memory through a cinematic mobile lens.",
+  intro:
+    "This rebuilt portfolio turns the first version of Photic Photo into a cleaner, sharper showcase with a real contact workflow, structured galleries, and an admin space for new enquiries.",
+  about: [
+    "I am a self-taught mobile photographer focused on transforming everyday moments into high-contrast, story-led frames.",
+    "My work moves between nature, portraiture, street observation, night scenes, and experimental edits.",
+    "Photic Photo is where I collect the frames, grading experiments, and visual studies that shaped my style.",
+  ],
+  links: {
+    instagram: "https://www.instagram.com/photic.photo",
+    linkedin: "https://www.linkedin.com/in/omshri23/",
+    youtube: "https://www.youtube.com/@PHOTIC_PHOTO",
+    github: "https://github.com/omshri-23",
+    whatsapp: "https://wa.me/917387517570",
+  },
+};
+
+export const highlights = [
+  { value: "6", label: "Curated collections" },
+  { value: "2", label: "Before/after edits" },
+  { value: "2", label: "Video grading samples" },
+  { value: "100%", label: "Shot and edited with intent" },
+];
+
+export const categoryMeta = [
+  {
+    slug: "nature",
+    title: "Nature",
+    cover: "boat.jpg",
+    description: "Greens, light breaks, skies, stillness, and natural geometry.",
+  },
+  {
+    slug: "portrait",
+    title: "Portrait",
+    cover: "portrait.jpg",
+    description: "Faces, expressions, mood-led compositions, and close human detail.",
+  },
+  {
+    slug: "street",
+    title: "Street",
+    cover: "man-portrait.jpg",
+    description: "Unscripted city moments, candid frames, and movement in public space.",
+  },
+  {
+    slug: "random",
+    title: "Random",
+    cover: "random.jpg",
+    description: "Creative experiments, observations, and images that resist one label.",
+  },
+  {
+    slug: "night",
+    title: "Night",
+    cover: "night.jpg",
+    description: "Dark tones, neon mood, long shadows, and after-hours atmosphere.",
+  },
+  {
+    slug: "others",
+    title: "Others",
+    cover: "others.jpg",
+    description: "Everything that sits outside the core sets but still belongs in the archive.",
+  },
+];
+
+export const featuredVault = [];
+
+export const categoryCollections = [];
+
+export const comparisons = [
+  {
+    title: "Color reconstruction",
+    before: "before02.jpg",
+    after: "after02.jpg",
+  },
+  {
+    title: "Mood shift",
+    before: "before01.jpg",
+    after: "after01.jpg",
+  },
+];
+
+export const fallbackPortfolioItems = [];
