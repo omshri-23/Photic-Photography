@@ -34,37 +34,37 @@ export const categoryMeta = [
   {
     slug: "nature",
     title: "Nature",
-    cover: "boat.jpg",
+    cover: "media/boat.jpg",
     description: "Greens, light breaks, skies, stillness, and natural geometry.",
   },
   {
     slug: "portrait",
     title: "Portrait",
-    cover: "portrait.jpg",
+    cover: "media/portrait.jpg",
     description: "Faces, expressions, mood-led compositions, and close human detail.",
   },
   {
     slug: "street",
     title: "Street",
-    cover: "man-portrait.jpg",
+    cover: "media/man-portrait.jpg",
     description: "Unscripted city moments, candid frames, and movement in public space.",
   },
   {
     slug: "random",
     title: "Random",
-    cover: "random.jpg",
+    cover: "media/random.jpg",
     description: "Creative experiments, observations, and images that resist one label.",
   },
   {
     slug: "night",
     title: "Night",
-    cover: "night.jpg",
+    cover: "media/night.jpg",
     description: "Dark tones, neon mood, long shadows, and after-hours atmosphere.",
   },
   {
     slug: "others",
     title: "Others",
-    cover: "others.jpg",
+    cover: "media/others.jpg",
     description: "Everything that sits outside the core sets but still belongs in the archive.",
   },
 ];
@@ -76,13 +76,13 @@ export const categoryCollections = [];
 export const comparisons = [
   {
     title: "Color reconstruction",
-    before: "before02.jpg",
-    after: "after02.jpg",
+    before: "media/before02.jpg",
+    after: "media/after02.jpg",
   },
   {
     title: "Mood shift",
-    before: "before01.jpg",
-    after: "after01.jpg",
+    before: "media/before01.jpg",
+    after: "media/after01.jpg",
   },
 ];
 
