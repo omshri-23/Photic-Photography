@@ -5,6 +5,11 @@ function badRequest(res, message) {
   return res.status(400).json({ error: message });
 }
 
+function isValidEmail(value) {
+  const email = String(value || "").trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed." });
@@ -16,15 +21,36 @@ export default async function handler(req, res) {
     return badRequest(res, "Name, email, and message are required.");
   }
 
+  const nameValue = String(name).trim();
+  const emailValue = String(email).trim().toLowerCase();
+  const subjectValue = String(subject).trim();
+  const messageValue = String(message).trim();
+
+  if (!isValidEmail(emailValue)) {
+    return badRequest(res, "Please enter a valid email address.");
+  }
+  if (nameValue.length > 80) {
+    return badRequest(res, "Name is too long.");
+  }
+  if (emailValue.length > 254) {
+    return badRequest(res, "Email is too long.");
+  }
+  if (subjectValue.length > 120) {
+    return badRequest(res, "Subject is too long.");
+  }
+  if (messageValue.length > 5000) {
+    return badRequest(res, "Message is too long.");
+  }
+
   try {
     const supabase = getSupabaseAdmin();
     const { data, error } = await supabase
       .from("contact_messages")
       .insert({
-        name: String(name).trim(),
-        email: String(email).trim().toLowerCase(),
-        subject: String(subject).trim(),
-        message: String(message).trim(),
+        name: nameValue,
+        email: emailValue,
+        subject: subjectValue,
+        message: messageValue,
         status: "new",
       })
       .select("id, created_at")
@@ -39,14 +65,14 @@ export default async function handler(req, res) {
       await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || "Photic Photo <onboarding@resend.dev>",
         to: process.env.NOTIFY_EMAIL,
-        replyTo: String(email).trim(),
-        subject: `New contact message${subject ? `: ${String(subject).trim()}` : ""}`,
+        replyTo: emailValue,
+        subject: `New contact message${subjectValue ? `: ${subjectValue}` : ""}`,
         text: [
-          `Name: ${String(name).trim()}`,
-          `Email: ${String(email).trim()}`,
-          `Subject: ${String(subject).trim() || "General enquiry"}`,
+          `Name: ${nameValue}`,
+          `Email: ${emailValue}`,
+          `Subject: ${subjectValue || "General enquiry"}`,
           "",
-          String(message).trim(),
+          messageValue,
         ].join("\n"),
       });
     }

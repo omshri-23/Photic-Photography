@@ -22,17 +22,21 @@ export default async function handler(req, res) {
 
     await verifyAdminToken(token);
 
-    const supabase = getSupabaseAdmin();
-    const { data, error } = await supabase
-      .from("contact_messages")
-      .select("id, name, email, subject, message, status, created_at")
-      .order("created_at", { ascending: false });
+    try {
+      const supabase = getSupabaseAdmin();
+      const { data, error } = await supabase
+        .from("contact_messages")
+        .select("id, name, email, subject, message, status, created_at")
+        .order("created_at", { ascending: false });
 
-    if (error) {
-      throw error;
+      if (error) {
+        throw error;
+      }
+
+      return res.status(200).json({ messages: data || [] });
+    } catch (error) {
+      return res.status(500).json({ error: error.message || "Unable to load messages." });
     }
-
-    return res.status(200).json({ messages: data || [] });
   } catch (error) {
     return res.status(401).json({ error: error.message || "Unauthorized." });
   }

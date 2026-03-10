@@ -17,11 +17,29 @@ async function authorize(req) {
   await verifyAdminToken(token);
 }
 
+function isUuid(value) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+    String(value || ""),
+  );
+}
+
+function slugify(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export default async function handler(req, res) {
   try {
     await authorize(req);
-    const supabase = getSupabaseAdmin();
+  } catch (error) {
+    return res.status(401).json({ error: error.message || "Unauthorized." });
+  }
 
+  const supabase = getSupabaseAdmin();
+
+  try {
     if (req.method === "GET") {
       const { data, error } = await supabase
         .from("portfolio_items")
@@ -56,17 +74,42 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: "Title, media type, category, and media URL are required." });
       }
 
+      const normalizedMediaType = String(mediaType).trim();
+      if (!["image", "video"].includes(normalizedMediaType)) {
+        return res.status(400).json({ error: "Media type must be image or video." });
+      }
+
+      const normalizedStatus = String(status).trim();
+      if (!["draft", "published"].includes(normalizedStatus)) {
+        return res.status(400).json({ error: "Status must be draft or published." });
+      }
+
+      const normalizedCategory = slugify(categorySlug);
+      if (!normalizedCategory) {
+        return res.status(400).json({ error: "Category slug is invalid." });
+      }
+
+      const titleValue = String(title).trim();
+      if (titleValue.length > 120) {
+        return res.status(400).json({ error: "Title is too long." });
+      }
+
+      const descriptionValue = String(description).trim();
+      if (descriptionValue.length > 1000) {
+        return res.status(400).json({ error: "Description is too long." });
+      }
+
       const { data, error } = await supabase
         .from("portfolio_items")
         .insert({
-          title: String(title).trim(),
-          description: String(description).trim(),
-          media_type: String(mediaType).trim(),
-          category_slug: String(categorySlug).trim(),
+          title: titleValue,
+          description: descriptionValue,
+          media_type: normalizedMediaType,
+          category_slug: normalizedCategory,
           media_url: String(mediaUrl).trim(),
           thumbnail_url: String(thumbnailUrl).trim(),
           featured: Boolean(featured),
-          status: String(status).trim(),
+          status: normalizedStatus,
           sort_order: Number(sortOrder) || 0,
         })
         .select(
@@ -85,6 +128,9 @@ export default async function handler(req, res) {
       const { id } = req.query || {};
       if (!id) {
         return res.status(400).json({ error: "Portfolio item id is required." });
+      }
+      if (!isUuid(id)) {
+        return res.status(400).json({ error: "Portfolio item id is invalid." });
       }
 
       const { error } = await supabase.from("portfolio_items").delete().eq("id", id);
@@ -106,10 +152,17 @@ export default async function handler(req, res) {
       if (!id) {
         return res.status(400).json({ error: "Portfolio item id is required." });
       }
+      if (!isUuid(id)) {
+        return res.status(400).json({ error: "Portfolio item id is invalid." });
+      }
 
       const updates = {};
       if (typeof status === "string" && status.trim()) {
-        updates.status = status.trim();
+        const normalizedStatus = status.trim();
+        if (!["draft", "published"].includes(normalizedStatus)) {
+          return res.status(400).json({ error: "Status must be draft or published." });
+        }
+        updates.status = normalizedStatus;
       }
       if (typeof featured === "boolean") {
         updates.featured = featured;
@@ -140,6 +193,6 @@ export default async function handler(req, res) {
 
     return res.status(405).json({ error: "Method not allowed." });
   } catch (error) {
-    return res.status(401).json({ error: error.message || "Unauthorized." });
+    return res.status(500).json({ error: error.message || "Server error." });
   }
 }

@@ -426,7 +426,7 @@ function SectionHeading({ eyebrow, title, className = "" }) {
   return (
     <div className={className}>
       <p className="tag">{eyebrow}</p>
-      <h2 className="hl" dangerouslySetInnerHTML={{ __html: title }} />
+      <h2 className="hl">{title}</h2>
       <div className="hr" />
     </div>
   );
@@ -698,7 +698,7 @@ function HorizontalStrip({ items, onOpen }) {
 
   return (
     <section className="strip-section" id="strip">
-      <SectionHeading eyebrow="Signature Frames" title={"Drag <em>Gallery</em>"} className="sr" />
+      <SectionHeading eyebrow="Signature Frames" title={<>Drag <em>Gallery</em></>} className="sr" />
       <div className="strip-copy sr">
         Smooth horizontal drag-to-scroll for quick browsing across featured frames and experiments.
       </div>
@@ -846,7 +846,7 @@ function LabSection({ itemCount }) {
   return (
     <section id="lab">
       <div className="lab-copy sl">
-        <SectionHeading eyebrow="About the Lab" title={"Photic <em>Lab</em>"} />
+        <SectionHeading eyebrow="About the Lab" title={<>Photic <em>Lab</em></>} />
         <p>{profile.intro}</p>
       </div>
       <div className="lab-stats srr">
@@ -875,7 +875,7 @@ function CategoriesSection() {
   return (
     <section className="categories">
       <div className="cat-head sr">
-        <SectionHeading eyebrow="Browse by Genre" title={"Lab <em>Categories</em>"} />
+        <SectionHeading eyebrow="Browse by Genre" title={<>Lab <em>Categories</em></>} />
       </div>
       <div className="cgrid">
         {categoryMeta.map((item, index) => (
@@ -897,7 +897,7 @@ function CategoriesSection() {
 function ProcessSection() {
   return (
     <section className="process-section">
-      <SectionHeading eyebrow="Workflow" title={"Shoot <em>to Delivery</em>"} className="sr" />
+      <SectionHeading eyebrow="Workflow" title={<>Shoot <em>to Delivery</em></>} className="sr" />
       <div className="process-grid">
         {processSteps.map((item) => (
           <article key={item.number} className="process-card sr">
@@ -914,7 +914,7 @@ function ProcessSection() {
 function BeforeAfterSection() {
   return (
     <section className="bas">
-      <SectionHeading eyebrow="Edit Process" title={"Before <em>&amp; After</em>"} className="sr" />
+      <SectionHeading eyebrow="Edit Process" title={<>Before <em>&amp; After</em></>} className="sr" />
       <div className="bagrid">
         {comparisons.map((item, index) => (
           <BeforeAfterCard key={item.title} item={item} delay={index} />
@@ -961,7 +961,7 @@ function VideoSection({ items }) {
 
   return (
     <section className="vs" id="video">
-      <SectionHeading eyebrow="Color Grading Samples" title={"Shot <em>Reels</em>"} className="sr" />
+      <SectionHeading eyebrow="Color Grading Samples" title={<>Shot <em>Reels</em></>} className="sr" />
       <div className="vgrid">
         {videos.map((item, index) => (
           <VideoCard key={item.id} item={item} delay={index} />
@@ -975,11 +975,23 @@ function VideoCard({ item, delay }) {
   const ref = useRef(null);
   const [muted, setMuted] = useState(true);
 
+  const handleEnter = () => {
+    const node = ref.current;
+    if (!node) {
+      return;
+    }
+
+    const playPromise = node.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  };
+
   return (
     <article
       className="vw sr"
       style={{ transitionDelay: `${delay * 0.08}s` }}
-      onMouseEnter={() => ref.current?.play()}
+      onMouseEnter={handleEnter}
       onMouseLeave={() => {
         if (ref.current) {
           ref.current.pause();
@@ -987,7 +999,14 @@ function VideoCard({ item, delay }) {
         }
       }}
     >
-      <video ref={ref} src={toPublicUrl(item.media_url)} muted={muted} playsInline poster={toPublicUrl(item.thumbnail_url)} />
+      <video
+        ref={ref}
+        src={toPublicUrl(item.media_url)}
+        muted={muted}
+        playsInline
+        preload="metadata"
+        poster={toPublicUrl(item.thumbnail_url)}
+      />
       <div className="vlbl">{item.title || "Video reel"}</div>
       <button type="button" className="mbtn" onClick={() => setMuted((current) => !current)}>
         {muted ? "Unmute" : "Mute"}
@@ -1022,7 +1041,7 @@ function SpotlightSection({ item }) {
 function TestimonialSection() {
   return (
     <section className="testimonials-section">
-      <SectionHeading eyebrow="Client Reviews" title={"Words from <em>Collaborators</em>"} className="sr" />
+      <SectionHeading eyebrow="Client Reviews" title={<>Words from <em>Collaborators</em></>} className="sr" />
       <div className="testimonials-grid">
         {testimonials.map((item) => (
           <article key={item.name} className="testimonial-card sr">
@@ -1039,7 +1058,7 @@ function TestimonialSection() {
 function JournalSection() {
   return (
     <section className="journal-section" id="journal">
-      <SectionHeading eyebrow="Journal" title={"Behind the <em>Frames</em>"} className="sr" />
+      <SectionHeading eyebrow="Journal" title={<>Behind the <em>Frames</em></>} className="sr" />
       <div className="journal-grid">
         {journalPosts.map((item) => (
           <article key={item.slug} className="journal-card sr">
@@ -1056,7 +1075,7 @@ function JournalSection() {
 function PressSection() {
   return (
     <section className="press-section">
-      <SectionHeading eyebrow="Awards and Press" title={"Signals of <em>Momentum</em>"} className="sr" />
+      <SectionHeading eyebrow="Awards and Press" title={<>Signals of <em>Momentum</em></>} className="sr" />
       <div className="press-list">
         {pressMentions.map((item) => (
           <article key={item} className="press-card sr">
@@ -1104,7 +1123,7 @@ function ContactSection() {
     <section className="contact" id="contact">
       <div className="contact-left">
         <div className="sl">
-          <SectionHeading eyebrow="Let's Connect" title={"Get in <em>Touch</em>"} />
+          <SectionHeading eyebrow="Let's Connect" title={<>Get in <em>Touch</em></>} />
         </div>
         <p className="cdesc sl">Open for collaborations, portraits, reels, or visual experiments. Reach out and the message will land in the admin dashboard and by email notification.</p>
         <div className="citems sl">
@@ -1668,7 +1687,7 @@ function AdminPage() {
       </div>
       <div className="admin-grid">
         <section className="admin-form-card">
-          <SectionHeading eyebrow="Portfolio Media" title={"Add <em>New Work</em>"} />
+          <SectionHeading eyebrow="Portfolio Media" title={<>Add <em>New Work</em></>} />
           <form className="cform" onSubmit={handleCreateItem}>
             <label>
               Title
@@ -1756,7 +1775,7 @@ function AdminPage() {
           </form>
         </section>
         <section className="admin-messages-block">
-          <SectionHeading eyebrow="Messages" title={"Contact <em>Inbox</em>"} />
+          <SectionHeading eyebrow="Messages" title={<>Contact <em>Inbox</em></>} />
           <div className="admin-table-wrap">
             <table>
               <thead>
@@ -1782,7 +1801,7 @@ function AdminPage() {
         </section>
       </div>
       <section className="admin-messages-block">
-        <SectionHeading eyebrow="Library" title={"Current <em>Portfolio Items</em>"} />
+        <SectionHeading eyebrow="Library" title={<>Current <em>Portfolio Items</em></>} />
         <div className="vault-toolbar">
           <div className="filter-row">
             <button type="button" className={categoryFilter === "all" ? "chip active" : "chip"} onClick={() => setCategoryFilter("all")}>
