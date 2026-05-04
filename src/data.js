@@ -8,7 +8,7 @@ export const profile = {
   brand: "Photic Photo",
   name: "Omshri",
   title: "Mobile Photographer and Visual Storyteller",
-  heroImage: "media/uploads/portrait/img-20250914-151329-1.jpg",
+  heroImage: "media/uploads/portrait/portrait-12.jpg",
   location: "Kolhapur, Maharashtra, India",
   email: "omshri.2311@gmail.com",
   backupEmail: "omshrisingh93056@gmail.com",
@@ -79,13 +79,13 @@ export const categoryMeta = [
   {
     slug: "animal",
     title: "Animal",
-    cover: "media/uploads/animal/agc-20241214-085820822-portrait-original.jpg",
+    cover: "media/uploads/animal/animal-2.jpg",
     description: "Animal studies, close observations, and frames shaped by instinct, texture, and timing.",
   },
   {
     slug: "monochrome",
     title: "Black & White",
-    cover: "media/uploads/monochrome/img-20250722-205640.jpg",
+    cover: "media/uploads/monochrome/monochrome-2.jpg",
     description: "Monochrome frames focused on contrast, structure, and atmosphere over color.",
   },
 ];
