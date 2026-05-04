@@ -67,6 +67,44 @@ Optional (run Vercel functions locally too):
 vercel dev
 ```
 
+## Local Image Workflow
+
+If you do not want to use the admin dashboard for gallery images:
+
+1. Put source images inside category folders under `D:\upload image\`
+2. Supported category folder names:
+   - `nature`
+   - `portrait`
+   - `street`
+   - `random`
+   - `night`
+   - `others`
+   - `animal`
+   - `Black n white`
+   - `video`
+3. Run:
+
+```bash
+npm run import:local-media
+```
+
+This will:
+
+- copy images into `public/media/uploads/...`
+- create compressed main images and smaller thumbnails
+- copy curated video files into `public/media/uploads/video/...`
+- update `src/generated-local-media.js`
+- make the new images appear in the site without using admin upload
+- respect `scripts/local-media-curation.json` when you want only selected images on the live site
+
+Notes:
+
+- supported source formats: `.jpg`, `.jpeg`, `.png`
+- supported video formats: `.mp4`, `.mov`, `.m4v`, `.webm`
+- current compression uses high-quality JPEG output for faster loading
+- video files are currently copied as-is; install a video encoder such as `ffmpeg` if you want true video compression/transcoding
+- the admin dashboard still remains available for future use
+
 ## Environment Variables
 
 Copy `.env.example` to `.env` and fill values.

@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 .vercel/
+public/media/uploads/
+public/media/reels/
